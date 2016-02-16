@@ -38,27 +38,25 @@ public class Room {
         return item;
     }
 
+    @Override
     public String toString(){
         if(getNorthDoor() == null){
-
-            return "You see a " + getAdj() +
+            return "You see a " + getAdj() + " room." +
                     "\nIt has a " + getObj() +
-                    "\nA " + getSouthDoor() + " leads South.";
+                    "\nA " + getSouthDoor() + " door leads South.";
         }
 
         else if(getSouthDoor() == null){
-
-            return "You see a " + getAdj() +
+            return "You see a " + getAdj() + " room." +
                     "\nIt has a " + getObj() +
-                    "\nA " + getNorthDoor() + " leads North.";
+                    "\nA " + getNorthDoor() + " door leads North.";
         }
 
         else {
-
-            return "You see a " + getAdj() +
+            return "You see a " + getAdj() + " room." +
                     "\nIt has a " + getObj() +
-                    "\nA " + getNorthDoor() + " leads North." +
-                    "\nA " + getSouthDoor() + " leads South.";
+                    "\nA " + getNorthDoor() + " door leads North." +
+                    "\nA " + getSouthDoor() + " door leads South.";
         }
 
     }
