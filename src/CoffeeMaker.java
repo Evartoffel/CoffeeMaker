@@ -66,40 +66,44 @@ public class CoffeeMaker {
 
     public int checkWin(boolean list[]){
         int errorCode = 0;
+
         if(checkCoffee(list) && checkCream(list) && checkSugar(list)){
             System.out.println("You drink the beverage and are ready to study!\nYou win!");
+            return 0;
         } else if(!checkCoffee(list) && checkCream(list) && checkSugar(list)){
             System.out.println("You drink the sweetened cream, but without caffeine, you cannot study.\nYou lose!");
-            errorCode = 1;
+           return 1;
 
         } else if(!checkCoffee(list) && !checkCream(list) && checkSugar(list)){
             System.out.println("You eat the sugar, but without caffeine, you cannot study.\nYou lose!");
-            errorCode = 1;
+            return 1;
 
         } else if(!checkCoffee(list) && !checkCream(list) && checkSugar(list)){
             System.out.println("You drink the air, as you have no coffee, sugar, or cream.\n" +
                     "The air is invigorating, but not invigorating enough.  You cannot study.\n" +
                     "You lose!");
-            errorCode = 1;
+            return 1;
 
         } else if(!checkCoffee(list) && !checkCream(list) && !checkSugar(list)){
             System.out.println("You drink the cream, but without caffeine, you cannot study.\nYou lose!");
-            errorCode = 1;
+            return 1;
 
         } else if(checkCoffee(list) && !checkCream(list)){
             System.out.println("Without cream, you get an ulcer and cannot study.\nYou lose!");
-            errorCode = 1;
+            return 1;
 
         } else if(checkCoffee(list) && checkCream(list) && !checkSugar(list)){
             System.out.println("Without sugar, the coffee is too bitter. You cannot study.\nYou lose!");
-            errorCode = 1;
+            return 1;
 
         } else if(!checkCoffee(list) && checkCream(list) && !checkSugar(list)){
             System.out.println("You drink the cream, but without caffeine, you cannot study.\nYou lose!");
-            errorCode = 1;
+            return 1;
+        } else {
+            return 1;
         }
 
-        return errorCode;
+
 
     }
 
@@ -146,8 +150,10 @@ public class CoffeeMaker {
             } else if(choice.equalsIgnoreCase("I")){
                 printInventory(inventory);
             } else if(choice.equalsIgnoreCase("D")){
-                checkWin(checklist);
+                int errorCode = checkWin(checklist);
                 keepPlaying = false;
+
+                System.out.println("Exiting with error code " + errorCode);
 
             } else if(choice.equalsIgnoreCase("H")){
                 System.out.println("Menu: " +
